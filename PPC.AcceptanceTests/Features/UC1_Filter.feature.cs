@@ -252,6 +252,33 @@ namespace PPC.AcceptanceTests.Features
 #line 8
  testRunner.Given("the following project", ((string)(null)), table1, "Given ");
 #line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Email",
+                        "Password",
+                        "FullName",
+                        "Phone",
+                        "Address",
+                        "Role",
+                        "Status"});
+            table2.AddRow(new string[] {
+                        "lythihuyenchau@gmail.com",
+                        "123456",
+                        "Ly Chau",
+                        "0999580654",
+                        "Trần Hưng Đạo",
+                        "1",
+                        "True"});
+            table2.AddRow(new string[] {
+                        "sonnguyen@gmail.com",
+                        "123456",
+                        "son",
+                        "09999999",
+                        "Trần Hưng Đạo",
+                        "2",
+                        "True"});
+#line 17
+ testRunner.Given("user table :", ((string)(null)), table2, "Given ");
+#line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -261,13 +288,13 @@ namespace PPC.AcceptanceTests.Features
         public virtual void SearchProject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("search project", ((string[])(null)));
-#line 16
+#line 21
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 17
+#line 22
  testRunner.When("I search for projects by the phrase \'PIS\',\'Apartment\',\'Chương Mỹ\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 18
+#line 23
  testRunner.Then("project should display project with projectname follow \'PIS Top Apartment\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

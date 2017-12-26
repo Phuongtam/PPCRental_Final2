@@ -252,6 +252,33 @@ namespace PPC.AcceptanceTests.Features
 #line 7
  testRunner.Given("the following project", ((string)(null)), table1, "Given ");
 #line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Email",
+                        "Password",
+                        "FullName",
+                        "Phone",
+                        "Address",
+                        "Role",
+                        "Status"});
+            table2.AddRow(new string[] {
+                        "lythihuyenchau@gmail.com",
+                        "123456",
+                        "Ly Chau",
+                        "0999580654",
+                        "Trần Hưng Đạo",
+                        "1",
+                        "True"});
+            table2.AddRow(new string[] {
+                        "sonnguyen@gmail.com",
+                        "123456",
+                        "son",
+                        "09999999",
+                        "Trần Hưng Đạo",
+                        "2",
+                        "True"});
+#line 16
+ testRunner.Given("user table :", ((string)(null)), table2, "Given ");
+#line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -261,23 +288,23 @@ namespace PPC.AcceptanceTests.Features
         public virtual void ViewListAgencyProject()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View list Agency Project", ((string[])(null)));
-#line 15
+#line 20
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
-#line 16
+#line 21
  testRunner.When("I input \'lythihuyenchau@gmail.com\' and \'123456\' into Login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName"});
-            table2.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "ViLa Q7"});
-            table2.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "PIS Serviced Apartment – Style"});
-            table2.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "ICON 56 – Modern Style Apartment"});
-#line 17
- testRunner.Then("I should show all agency project", ((string)(null)), table2, "Then ");
+#line 22
+ testRunner.Then("I should show all agency project", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

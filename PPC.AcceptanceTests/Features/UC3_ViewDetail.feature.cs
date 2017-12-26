@@ -251,6 +251,33 @@ namespace PPC.AcceptanceTests.Features
 #line 6
  testRunner.Given("the following project", ((string)(null)), table1, "Given ");
 #line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Email",
+                        "Password",
+                        "FullName",
+                        "Phone",
+                        "Address",
+                        "Role",
+                        "Status"});
+            table2.AddRow(new string[] {
+                        "lythihuyenchau@gmail.com",
+                        "123456",
+                        "Ly Chau",
+                        "0999580654",
+                        "Trần Hưng Đạo",
+                        "1",
+                        "True"});
+            table2.AddRow(new string[] {
+                        "sonnguyen@gmail.com",
+                        "123456",
+                        "son",
+                        "09999999",
+                        "Trần Hưng Đạo",
+                        "2",
+                        "True"});
+#line 15
+ testRunner.Given("user table :", ((string)(null)), table2, "Given ");
+#line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -260,25 +287,25 @@ namespace PPC.AcceptanceTests.Features
         public virtual void ViewDetail()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View Detail", ((string[])(null)));
-#line 14
+#line 19
 this.ScenarioSetup(scenarioInfo);
 #line 5
 this.FeatureBackground();
-#line 15
+#line 20
  testRunner.When("I press the button Detail in project \'PIS Top Apartment\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "PropertyName",
                         "Type",
                         "Price",
                         "Area"});
-            table2.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "PIS Top Apartment",
                         "Apartment",
                         "10000",
                         "120m2"});
-#line 16
- testRunner.Then("the result should show :", ((string)(null)), table2, "Then ");
+#line 21
+ testRunner.Then("the result should show :", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

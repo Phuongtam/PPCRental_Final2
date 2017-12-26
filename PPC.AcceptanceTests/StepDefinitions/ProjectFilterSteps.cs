@@ -29,9 +29,6 @@ namespace PPC.AcceptanceTests.StepDefinitions
             _searchDriver.Search(p0, type_ID, Dis_ID);
         }
 
-
-
-
         [Then(@"project should display project with projectname follow '(.*)'")]
         public void ThenProjectShouldDisplayProjectWithProjectnameFollow(string expectedTitles)
         {

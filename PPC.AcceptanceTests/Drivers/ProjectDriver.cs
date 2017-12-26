@@ -43,6 +43,10 @@ namespace PPC.AcceptanceTests.Drivers
                         Sale_ID = db.USER.ToList().FirstOrDefault(x => x.FullName == row["Sale"]).ID,
                         Avatar = row["Avarta"],
                         Images = row["Images"],
+                        BedRoom = int.Parse(row["BedRoom"]),
+                        BathRoom = int.Parse(row["BathRoom"]),
+                        PackingPlace = int.Parse(row["PackingPlace"]),
+                        Price = int.Parse(row["Price"]),
 
                     };
 

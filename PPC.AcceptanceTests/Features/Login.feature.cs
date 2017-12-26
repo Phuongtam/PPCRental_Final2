@@ -113,7 +113,7 @@ namespace PPC.AcceptanceTests.Features
                         "2",
                         "True"});
 #line 8
- testRunner.Given("the following account", ((string)(null)), table1, "Given ");
+ testRunner.Given("user table :", ((string)(null)), table1, "Given ");
 #line hidden
         }
         
@@ -124,15 +124,15 @@ namespace PPC.AcceptanceTests.Features
         public virtual void LoginSuccessfully()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login successfully", ((string[])(null)));
-#line 13
+#line 12
 this.ScenarioSetup(scenarioInfo);
 #line 7
 this.FeatureBackground();
-#line 14
+#line 13
  testRunner.When("I am at Home Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 15
+#line 14
  testRunner.And("I have navigate to Login Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
+#line 15
  testRunner.And("I entered \'lythihuyenchau@gmail.com\' and \'123456\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

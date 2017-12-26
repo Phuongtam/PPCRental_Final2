@@ -14,13 +14,6 @@ namespace PPC.AcceptanceTests.StepDefinitions
             _userDriver = driver;
         }
 
-
-        [Given(@"the following account")]
-        public void GivenTheFollowingAccount(Table bg)
-        {
-            _userDriver.InsertToDb(bg);
-        }
-
         [When(@"I am at Home Page")]
         public void WhenIAmAtHomePage()
         {

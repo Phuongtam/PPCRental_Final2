@@ -11,6 +11,11 @@ Background:
 	| Vinhomes Central Park L2 – Duong’s Apartment | PIS_7389-Edit-stamp.jpg                 | PIS_7319-Edit-stamp.jpg,                                        | Villa        | Vinhomes Central Park is a new development that is in the heart of everything that Ho Chi Minh has to offer.                                                                                                                        | Số 39          | TT Xuân Mai | Chương Mỹ | 110000 | VND       | 150m2 | 4       | 2        | 1            | Ly Chau | 2017-11-09 | 2017-11-09  | Đã duyệt   | Done | 2017-11-23 | Ly Chau |
 	| Saigon Pearl Ruby Block                      | PIS_7319-Edit-stamp.jpg                 | PIS_7319-Edit-stamp.jpg,                                        | Apartment    | Studio apartment at central of CBD, nearby Ben Thanh market, Bui Vien Backpacker Area, 23/9 park…                                                                                                                                   | Thôn Chúc Đồng | Đại Yên     | Chương Mỹ | 30000  | VND       | 130m2 | 3       | 5        | 1            | Ly Chau | 2017-11-09 | 2017-11-09  | Đã duyệt   | Done | 2017-11-23 | Ly Chau |
 	| ICON 56 – Modern Style Apartment             | PIS_7432-Edit-stamp.jpg                 | PIS_7432-Edit-stamp.jpg,                                        | Villa        | ICON 56 – Modern Style Apartment $ 950 Per Month Condominium in Rentals 56 Ben Van Don, Ho Chi Minh City Icon 56 is 4 star building with strategic location and excellent amenities including infinity swimming pool and modern gym | Quảng Phúc     | Ba Trại     | Ba Vì     | 30000  | VND       | 130m2 | 2       | 3        | 1            | son     | 2017-11-09 | 2017-11-09  | Đã duyệt | Done | 2017-11-23 |   Ly Chau  |
+
+	Given user table :
+	| Email                    | Password | FullName | Phone      | Address       | Role | Status |
+	| lythihuyenchau@gmail.com | 123456   | Ly Chau | 0999580654 | Trần Hưng Đạo | 1    | True   |
+	| sonnguyen@gmail.com      | 123456   | son      | 09999999   | Trần Hưng Đạo | 2    | True   |
 Scenario: View Detail
 	When I press the button Detail in project 'PIS Top Apartment'
 	Then the result should show :
