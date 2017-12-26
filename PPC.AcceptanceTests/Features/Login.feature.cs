@@ -45,7 +45,8 @@ namespace PPC.AcceptanceTests.Features
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Login", "\tAs a owner of property\r\n\tI want to login to website\r\n\tSo that i can manage my pr" +
-                    "operty ", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "operty ", ProgrammingLanguage.CSharp, new string[] {
+                        "login"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -111,6 +112,7 @@ namespace PPC.AcceptanceTests.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Login successfully")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Login")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("login")]
         public virtual void LoginSuccessfully()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login successfully", ((string[])(null)));

@@ -5,7 +5,7 @@ using TechTalk.SpecFlow;
 
 namespace PPC.AcceptanceTests.StepDefinitions
 {
-    [Binding]
+    [Binding, Scope(Tag = "login")]
     public class LoginSteps
     {
         private readonly UserDriver _userDriver;

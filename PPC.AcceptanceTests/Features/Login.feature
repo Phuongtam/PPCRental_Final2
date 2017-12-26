@@ -1,8 +1,8 @@
-﻿Feature: Login
+﻿@login
+Feature: Login
 	As a owner of property
 	I want to login to website
 	So that i can manage my property 
-
 
 Background:
 	Given the following account
