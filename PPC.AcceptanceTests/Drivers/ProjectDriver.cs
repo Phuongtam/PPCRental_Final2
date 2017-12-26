@@ -47,7 +47,7 @@ namespace PPC.AcceptanceTests.Drivers
                         BathRoom = int.Parse(row["BathRoom"]),
                         PackingPlace = int.Parse(row["PackingPlace"]),
                         Price = int.Parse(row["Price"]),
-
+                         Area = row["Area"],
                     };
 
                     //_context.ReferenceBooks.Add(
