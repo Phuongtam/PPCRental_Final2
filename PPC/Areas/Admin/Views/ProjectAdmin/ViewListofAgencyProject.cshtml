@@ -1,0 +1,96 @@
+﻿@model IEnumerable<PPC.Models.PROPERTY>
+
+@{
+    ViewBag.Title = "ViewListofAgencyProject";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ViewListofAgencyProject</h2>
+
+<div class="col-md-12">
+    <p>
+        <br>
+        <br>
+
+        @Html.ActionLink(" Create New", "Create")
+
+    </p>
+</div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="blue">
+                        <a href=""><h4 class="title">List Of Agency Project</h4></a>
+                        @*<p class="category">Here is a subtitle for this table</p>*@
+                    </div>
+
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text">
+                                <tr>
+                                    <th></th>
+                                    <th><b>Property Name</b></th>
+                                    <th><b>Avatar</b></th>
+                                    <th><b>Property Type</b></th>
+                                    <th><b>District</b></th>
+                                    <th><b>Price</b></th>
+                                    <th><b>Area</b></th>
+                                    <th><b>Status</b></th>
+                                    <th><b>Agency</b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a href="~/Admin/ProjectAdmin/Edit/@item.ID" title="Edit"><img src="~/Images/edit.png" width="20px" /></a><br />
+                                            <a href="~/Admin/ProjectAdmin/Delete/@item.ID" title="Delete"><img src="~/Images/if_delete_16_22536.png" width="20px" /></a>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PropertyName)
+                                        </td>
+                                        <td>
+                                            <img src="~/Images/@item.Avatar" width="100px" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PROPERTY_TYPE.CodeType)
+                                            @*<p>@item.PROPERTY_TYPE.CodeType</p>*@
+                                        </td>
+                                        <td>
+                                            @*<p>@item.DISTRICT.DistrictName</p>*@
+                                            @Html.DisplayFor(modelItem => item.DISTRICT.DistrictName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Area)
+                                        </td>
+
+                                        <td>
+                                            @*@Html.DisplayFor(modelItem => item.PROJECT_STATUS.Status_Name)*@
+                                            @*<p>@item.PROJECT_STATUS.Status_Name</p>*@
+                                            @Html.DisplayFor(modelItem => item.PROJECT_STATUS.Status_Name)
+                                        </td>
+
+
+                                        <td>
+
+                                            @Html.DisplayFor(modelItem => item.USER.FullName)
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+

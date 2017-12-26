@@ -1,0 +1,36 @@
+﻿@model PPC.Models.USER
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PPC Rental Login</title>
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <script src="~/Scripts/js/prefixfree.min.js"></script>
+</head>
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.ValidationSummary(true)
+    <body>
+        <div class="body"></div>
+        <div class="grad"></div>
+        <div class="header">
+            <div>PPC<span>Rental</span></div>
+        </div>
+        <br>
+        <div class="login">
+            @Html.TextBoxFor(model => model.Email)
+            @Html.PasswordFor(model => model.Password)
+            <input  type="submit" value="Login">
+        </div>
+        <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+    </body>
+}
+
+</html>
