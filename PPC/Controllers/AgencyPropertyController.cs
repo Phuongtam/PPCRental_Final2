@@ -125,6 +125,19 @@ namespace PPC.Controllers
 
                     db.PROPERTY.Add(property);
                     db.SaveChanges();
+                    var features = Request.Form.AllKeys.Where(k => k.StartsWith("Feature_"));
+                    foreach (var feature in features)
+                    {
+                        var id = int.Parse(feature.Split('_')[1]);
+                        if (Request.Form[feature].StartsWith("true"))
+                        {
+                            db.PROPERTY_FEATURE.Add(new PROPERTY_FEATURE
+                            {
+                                Property_ID = property.ID,
+                                Feature_ID = id
+                            });
+                        }
+                    }
                     return RedirectToAction("ViewListMyProject", "AgencyProperty");
                 }
 
@@ -194,7 +207,7 @@ namespace PPC.Controllers
                 property.Created_at = DateTime.Now;
                 property.Create_post = DateTime.Now;
                 property.UnitPrice = "VND";
-                property.Status_ID = 2;
+                property.Status_ID = 1;
                 property.UserID = int.Parse(Session["UserID"].ToString());
 
                 if (ModelState.IsValid)
@@ -263,7 +276,9 @@ namespace PPC.Controllers
             db.SaveChanges();
             return RedirectToAction("ViewListMyProject", "AgencyProperty");
         }
-       
+
+        #region upload anh
+
 
         private string ImagesU(PROPERTY p)
         {
@@ -273,31 +288,31 @@ namespace PPC.Controllers
             string b;
             string s = "";
             try
-            { 
-            foreach (var file in p.UpImages)
             {
-               
-                if (file.ContentLength > 0)
+                foreach (var file in p.UpImages)
                 {
-                    filename = Path.GetFileNameWithoutExtension(file.FileName);
-                    extension = Path.GetExtension(file.FileName);
-                    filename = filename + DateTime.Now.ToString("yymmssff") + extension;
-                    p.Images = filename;
-                    b = p.Images;
-                    s = string.Concat(s, b, ",");
-                    filename = Path.Combine(Server.MapPath("~/Images"), filename);
-                    file.SaveAs(filename);
+
+                    if (file.ContentLength > 0)
+                    {
+                        filename = Path.GetFileNameWithoutExtension(file.FileName);
+                        extension = Path.GetExtension(file.FileName);
+                        filename = filename + DateTime.Now.ToString("yymmssff") + extension;
+                        p.Images = filename;
+                        b = p.Images;
+                        s = string.Concat(s, b, ",");
+                        filename = Path.Combine(Server.MapPath("~/Images"), filename);
+                        file.SaveAs(filename);
+
+                    }
 
                 }
-                    
-                }
                 return s;
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 return s;
             }
-        
+
 
         }
         private string AvatarU(PROPERTY p)
@@ -332,21 +347,21 @@ namespace PPC.Controllers
 
             //try
             //{
-                if (p.AvatarUpload != null)
-                {
-                    filename = Path.GetFileNameWithoutExtension(p.AvatarUpload.FileName);
-                    extension = Path.GetExtension(p.AvatarUpload.FileName);
-                    filename = filename + DateTime.Now.ToString("yymmssff") + extension;
-                    p.Avatar = filename;
-                    s = p.Avatar;
-                    filename = Path.Combine(Server.MapPath("~/Images"), filename);
-                    p.AvatarUpload.SaveAs(filename);
+            if (p.AvatarUpload != null)
+            {
+                filename = Path.GetFileNameWithoutExtension(p.AvatarUpload.FileName);
+                extension = Path.GetExtension(p.AvatarUpload.FileName);
+                filename = filename + DateTime.Now.ToString("yymmssff") + extension;
+                p.Avatar = filename;
+                s = p.Avatar;
+                filename = Path.Combine(Server.MapPath("~/Images"), filename);
+                p.AvatarUpload.SaveAs(filename);
 
-                }
-                else
-                {
-                    s = en.Avatar;
-                }
+            }
+            else
+            {
+                s = en.Avatar;
+            }
             //}
             //catch (NullReferenceException)
             //{
@@ -442,6 +457,7 @@ namespace PPC.Controllers
             return s;
 
         }
+        #endregion
         public ActionResult Delete(int? id)
         {
 

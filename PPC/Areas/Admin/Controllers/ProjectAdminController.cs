@@ -31,10 +31,10 @@ namespace PPC.Areas.Admin.Controllers
         {
             if (Session["UserID"] != null)
             {
-                if(Session["UserRole"].ToString() == "1" || Session["UserRole"].ToString() == "0")
+                if (Session["UserRole"].ToString() == "1" || Session["UserRole"].ToString() == "0")
                 {
-                    var r = db.USER.Where(x => x.Role != 0 && x.Role != 1);
-                    var p = db.PROPERTY.Where(x => x.Status_ID != 3 && (x.USER.Role != 0 && x.USER.Role != 1)).ToList();
+                    var r = db.USER.Where(x => x.Role != 0 || x.Role != 1);
+                    var p = db.PROPERTY.Where(x => x.Status_ID != 2 && (x.USER.Role != 0 && x.USER.Role != 1)).ToList();
                     return View(p);
                 }
                 return RedirectToAction("Login", "Account", new { area = "" });
@@ -70,7 +70,7 @@ namespace PPC.Areas.Admin.Controllers
             if (Session["UserID"] != null)
             {
                 var id = Session["Status_ID"];
-                var project = db.PROJECT_STATUS.Find(id=1);
+                var project = db.PROJECT_STATUS.Find(id = 1);
                 var project2 = db.PROJECT_STATUS.Find(id = 4);
                 var projectid = project.ID;
                 var projectid2 = project2.ID;
@@ -253,6 +253,7 @@ namespace PPC.Areas.Admin.Controllers
 
         }
 
+        #region luu anh
         private void AvatarU(PROPERTY p, out PROPERTY product, out string s)
         {
             product = db.PROPERTY.Find(p.ID);
@@ -364,6 +365,7 @@ namespace PPC.Areas.Admin.Controllers
             return s;
 
         }
+        #endregion
 
         public ActionResult Create()
         {
@@ -412,6 +414,19 @@ namespace PPC.Areas.Admin.Controllers
 
                     db.PROPERTY.Add(property);
                     db.SaveChanges();
+                    var features = Request.Form.AllKeys.Where(k => k.StartsWith("Feature_"));
+                    foreach (var feature in features)
+                    {
+                        var id = int.Parse(feature.Split('_')[1]);
+                        if (Request.Form[feature].StartsWith("true"))
+                        {
+                            db.PROPERTY_FEATURE.Add(new PROPERTY_FEATURE
+                            {
+                                Property_ID = property.ID,
+                                Feature_ID = id
+                            });
+                        }
+                    }
                     return RedirectToAction("ViewListofAgencyProject", "ProjectAdmin");
                 }
 
@@ -449,6 +464,7 @@ namespace PPC.Areas.Admin.Controllers
                 {
                     db.PROPERTY.Add(property);
                     db.SaveChanges();
+
                     return RedirectToAction("ViewListofAgencyProject", "ProjectAdmin");
                 }
 
@@ -514,4 +530,4 @@ namespace PPC.Areas.Admin.Controllers
         }
     }
 
-    }
+}

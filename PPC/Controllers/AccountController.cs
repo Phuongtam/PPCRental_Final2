@@ -98,7 +98,7 @@ namespace PPC.Controllers
                     user.Role = 2;
                     user.Status = true;
                     var result = Insert(user);
-                    if(result > 0)
+                    if (result > 0)
                     {
                         ViewBag.Success = "Register is successfull";
                         model = new RegisterViewModel();

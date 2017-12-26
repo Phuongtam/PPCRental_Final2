@@ -1,8 +1,18 @@
 ﻿@model PPC.Models.PROPERTY
+@using PPC.Models
+
 
 @{
+    DemoPPCRentalEntities db = new DemoPPCRentalEntities();
+
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var im = db.PROPERTY.FirstOrDefault(m => m.ID == Model.ID);
+    var fe = db.PROPERTY_FEATURE.ToList();
+
+
+
+    string[] images = im.Images.Split(',');
 }
 
 <h2>Details</h2>
@@ -32,25 +42,16 @@
 
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <div class="carousel-caption">
-                                        ...
-                                    </div>
-                                    <img src="/Images/@Model.Avatar" />
-
+                                <div class="active item" data-slide-number="1">
+                                    <img src="~/Images/@im.Avatar">
                                 </div>
-
-                                <div class="item">
-                                    <img src="/Images/@Model.Avatar" />
-                                    <div class="carousel-caption">
+                                @for (int i = 1; i < images.Count(); i++)
+                                {
+                                    <div class="item" data-slide-number="@(i+1)">
+                                        <img src="~/Images/@images[i-1]">
                                     </div>
-                                </div>
+                                }
 
-                                <div class="item">
-                                    <img src="/Images/@Model.Avatar" />
-                                    <div class="carousel-caption">
-                                    </div>
-                                </div>
 
                             </div>
 
@@ -94,13 +95,13 @@
                 <dd><h5>@Html.DisplayTextFor(model => model.Content)</h5></dd>
             </dl>
             <h4><b><span class=""></span> Images</b></h4>
-            @*@{string[] chuoi = @Model.Images.Split(',');
+            @{string[] chuoi = @Model.Images.Split(',');
 
             }
             @for (int i = 0; i < chuoi.Count() - 1; i++)
             {
                 <img src="~/Images/@chuoi[i]" width="100px" alt="@Model.Images" />
-            }*@
+            }
         </div>
         <br />
         <div class="col-lg-12 col-sm-6">
