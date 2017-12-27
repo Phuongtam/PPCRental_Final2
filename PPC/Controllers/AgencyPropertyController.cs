@@ -119,7 +119,7 @@ namespace PPC.Controllers
                 property.UnitPrice = "VND";
                 property.Status_ID = 1;
                 property.UserID = int.Parse(Session["UserID"].ToString());
-
+                
                 if (ModelState.IsValid)
                 {
 

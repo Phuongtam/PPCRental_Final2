@@ -230,6 +230,7 @@ namespace PPC.Areas.Admin.Controllers
             string b;
             AvatarU(p, out en, out s);
             ImagesU(p, out en, out b);
+          
 
             en.PROPERTY_TYPE = p.PROPERTY_TYPE;
             en.PropertyName = p.PropertyName;
@@ -260,8 +261,11 @@ namespace PPC.Areas.Admin.Controllers
             string filename;
             string extension;
 
-
-            if (p.AvatarUpload != null)
+            if (p.UpImages == null ||p.AvatarUpload ==null)
+            {
+                s = product.Avatar;
+            }else
+          
             {
                 filename = Path.GetFileNameWithoutExtension(p.AvatarUpload.FileName);
                 extension = Path.GetExtension(p.AvatarUpload.FileName);
@@ -272,10 +276,7 @@ namespace PPC.Areas.Admin.Controllers
                 p.AvatarUpload.SaveAs(filename);
 
             }
-            else
-            {
-                s = product.Avatar;
-            }
+           
         }
         private void ImagesU(PROPERTY p, out PROPERTY en, out string s)
         {
@@ -294,8 +295,6 @@ namespace PPC.Areas.Admin.Controllers
                 {
                     try
                     {
-                        if (file.ContentLength >= 0)
-                        {
                             filename = Path.GetFileNameWithoutExtension(file.FileName);
                             extension = Path.GetExtension(file.FileName);
                             filename = filename + DateTime.Now.ToString("yymmssff") + extension;
@@ -304,15 +303,13 @@ namespace PPC.Areas.Admin.Controllers
                             s = string.Concat(s, b, ",");
                             filename = Path.Combine(Server.MapPath("~/Images"), filename);
                             file.SaveAs(filename);
-                        }
-                        else
-                        {
-                            s = en.Images;
-                        }
+                       
+                          
+                        
                     }
-                    catch (ArgumentNullException)
+                    catch (NullReferenceException)
                     {
-
+                        s = en.Images;
                     }
                 }
             }
